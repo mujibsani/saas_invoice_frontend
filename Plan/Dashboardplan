@@ -1,0 +1,24 @@
+📊 **Dashboard with Actual Data** *(Automated Invoicing and Expense Tracker SaaS)*
+
+---
+
+✅ **Implemented Features:**
+1. **Summary Cards:** 
+   - Total Invoices  
+   - Total Expenses  
+   - Total Revenue  
+   - Outstanding Payments  
+2. **Charts:**  
+   - Monthly Invoice vs Expense trends *(coming next)*  
+   - Category-wise Expense distribution *(coming next)*  
+3. **Recent Activities:**  
+   - Latest Invoices *(to be implemented after charts)*  
+   - Recent Expenses *(to be implemented after charts)*  
+
+---
+
+💻 **Next Steps:**
+- ✅ **Summary Cards (Done)**: Real-time data fetched from the database via API.
+- 🔄 **Up Next:** Monthly Invoice vs Expense chart with real data.
+
+🚀 Let’s proceed with implementing the charts section!
