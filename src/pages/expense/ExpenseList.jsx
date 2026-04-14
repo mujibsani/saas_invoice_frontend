@@ -49,7 +49,7 @@ const ExpenseList = () => {
                 return;
             }
     
-            let url = `http://127.0.0.1:8000/api/users/expenses/`;
+            let url = `${import.meta.env.VITE_API_URL}/api/users/expenses/`;
     
             if (role === "user") {
                 // ✅ Users only see their own "approved" expenses
@@ -78,7 +78,7 @@ const ExpenseList = () => {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem("access_token");
-            const response = await axios.get("http://127.0.0.1:8000/api/users/user-list/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/user-list/", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUsers(response.data);
@@ -90,7 +90,7 @@ const ExpenseList = () => {
     const fetchCategories = async () => {
         try {
             const token = localStorage.getItem("access_token");
-            const response = await axios.get("http://127.0.0.1:8000/api/categories/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/categories/", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setCategories(response.data);
@@ -104,7 +104,7 @@ const ExpenseList = () => {
         try {
             const token = localStorage.getItem("access_token");
             await axios.post(
-                `http://127.0.0.1:8000/api/users/expenses/${id}/approve-reject/`,
+                `${import.meta.env.VITE_API_URL}/api/users/expenses/${id}/approve-reject/`,
                 { approval_status: status },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

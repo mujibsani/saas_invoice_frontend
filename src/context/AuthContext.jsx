@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/users/login/", {
+      const response = await fetch(import.meta.env.VITE_API_URL +"/api/users/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
   };
   const fetchProtectedData = async () => {
     const token = localStorage.getItem("token");
-    const response = await fetch("http://127.0.0.1:8000/api/protected-endpoint/", {
+    const response = await fetch(import.meta.env.VITE_API_URL + "/api/protected-endpoint/", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

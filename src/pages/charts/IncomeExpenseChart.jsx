@@ -19,7 +19,7 @@ const IncomeExpenseChart = () => {
         const token = localStorage.getItem("access_token");
         if (!token) throw new Error("No access token found.");
 
-        const response = await axios.get("http://127.0.0.1:8000/api/users/monthly-income-expense/", {
+        const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/monthly-income-expense/", {
           params: { year: selectedYear === "all" ? undefined : selectedYear, month: selectedMonth || undefined },
           headers: { Authorization: `Bearer ${token}` },
         });

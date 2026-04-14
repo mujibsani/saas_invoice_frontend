@@ -15,7 +15,7 @@ const DownloadInvoice = ({ invoiceId }) => {
 
             // ✅ Make API request to download the PDF
             const response = await axios.get(
-                `http://127.0.0.1:8000/api/users/invoices/${invoiceId}/pdf/`,
+                `${import.meta.env.VITE_API_URL}/api/users/invoices/${invoiceId}/pdf/`,
                 { headers, responseType: "blob" } // ✅ Ensure binary response
             );
 

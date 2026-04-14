@@ -19,7 +19,7 @@ const ExpenseDetails = () => {
                     return;
                 }
 
-                const response = await axios.get(`http://127.0.0.1:8000/api/users/expenses/${id}/`, {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/expenses/${id}/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -42,7 +42,7 @@ const ExpenseDetails = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.delete(`http://127.0.0.1:8000/api/users/expenses/${id}/`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/expenses/${id}/`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

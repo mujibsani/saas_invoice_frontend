@@ -20,13 +20,13 @@ const Sidebar = () => {
     const fetchTenantInfo = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const response = await axios.get("http://127.0.0.1:8000/api/users/tenant-info/", {
+        const response = await axios.get(import.meta.env.VITE_API_URL + "/api/users/tenant-info/", {
           headers: { Authorization: `Bearer ${token}` },
         });
   
         // Ensure full URL
         const fullLogoUrl = response.data.logo
-          ? `http://127.0.0.1:8000${response.data.logo}`
+          ? `${import.meta.env.VITE_API_URL}${response.data.logo}`
           : null;
   
         console.log("Logo URL: ", fullLogoUrl);
@@ -43,7 +43,7 @@ const Sidebar = () => {
   useEffect(() => {
     const fetchUnreadCount = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/users/notifications/unread-count/", {
+        const response = await axios.get(import.meta.env.VITE_API_URL + "/api/users/notifications/unread-count/", {
           headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` },
         });
         setUnreadCount(response.data.unread_count);
@@ -59,7 +59,7 @@ const Sidebar = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/users/notifications/", {
+      const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/notifications/", {
         headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` },
       });
       setNotifications(response.data);

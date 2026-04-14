@@ -18,7 +18,7 @@ import ExpenseList from "./pages/expense/ExpenseList";
 import ExpenseDetails from "./pages/expense/ExpenseDetails";
 import EditExpense from "./pages/expense/EditExpense";
 import Settings from "./pages/Settings";
-import Sidebar from "./components/SidebarComponent";
+import Sidebar from "./components/SideBarComponent"
 import UserList from "./pages/users/UserList";
 import AddClient from "./pages/clients/AddClient";
 import Unauthorized from "./pages/auths/Unauthorized";

@@ -25,7 +25,7 @@ const UserDashboard = () => {
                 }
     
                 const headers = { Authorization: `Bearer ${token}` };
-                const response = await axios.get("http://127.0.0.1:8000/api/users/user-dashboard/", { headers });
+                const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/user-dashboard/", { headers });
     
                 console.log("API Response:", response.data);
     

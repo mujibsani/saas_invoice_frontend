@@ -33,19 +33,19 @@ const CreateInvoice = () => {
                 const headers = { Authorization: `Bearer ${token}` };
 
                 // Fetch Clients
-                const clientsRes = await axios.get("http://127.0.0.1:8000/api/users/clients/", { headers });
+                const clientsRes = await axios.get(import.meta.env.VITE_API_URL +"/api/users/clients/", { headers });
                 setClients(clientsRes.data);
 
                 // Fetch Users (Admins can see all, users don't need this)
                 if (userRole === "admin") {
-                    const usersRes = await axios.get("http://127.0.0.1:8000/api/users/user-list/", { headers });
+                    const usersRes = await axios.get(import.meta.env.VITE_API_URL +"/api/users/user-list/", { headers });
                     setUsers(usersRes.data);
                 }
 
                 // Fetch Tenant Info
-                const tenantRes = await axios.get("http://127.0.0.1:8000/api/users/tenant-info/", { headers });
+                const tenantRes = await axios.get(import.meta.env.VITE_API_URL +"/api/users/tenant-info/", { headers });
                 // Fetch Last Invoice Number
-                const lastInvoiceRes = await axios.get("http://127.0.0.1:8000/api/users/invoices/last/", { headers });
+                const lastInvoiceRes = await axios.get(import.meta.env.VITE_API_URL +"/api/users/invoices/last/", { headers });
 
                 let lastInvoiceNumber = lastInvoiceRes.data.invoice_number || "INV-1000";
                 // console.log("last:", lastInvoiceNumber);

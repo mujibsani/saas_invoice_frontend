@@ -19,7 +19,7 @@ const DashboardContent = () => {
                 const token = localStorage.getItem("access_token");
                 if (!token) throw new Error("No access token found.");
 
-                const response = await axios.get("http://127.0.0.1:8000/api/users/dashboard/", {
+                const response = await axios.get(import.meta.env.VITE_API_URL + "/api/users/dashboard/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -40,7 +40,7 @@ const DashboardContent = () => {
                 const token = localStorage.getItem("access_token");
                 if (!token) throw new Error("No access token found.");
 
-                const response = await axios.get("http://127.0.0.1:8000/api/users/invoice-status-breakdown/", {
+                const response = await axios.get(import.meta.env.VITE_API_URL + "/api/users/invoice-status-breakdown/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

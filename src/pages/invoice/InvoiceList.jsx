@@ -38,7 +38,7 @@ const InvoiceList = () => {
                 return;
             }
 
-            let url = "http://127.0.0.1:8000/api/users/invoices/";
+            let url = import.meta.env.VITE_API_URL +"/api/users/invoices/";
             const params = new URLSearchParams();
             if (clientName) params.append("client_name", clientName);
             if (userName) params.append("user_name", userName);
@@ -72,7 +72,7 @@ const InvoiceList = () => {
     const fetchClients = async () => {
         try {
             const token = localStorage.getItem("access_token");
-            const response = await axios.get("http://127.0.0.1:8000/api/users/clients/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/clients/", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setClients(response.data);
@@ -84,7 +84,7 @@ const InvoiceList = () => {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem("access_token");
-            const response = await axios.get("http://127.0.0.1:8000/api/users/user-list/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/user-list/", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUsers(response.data);

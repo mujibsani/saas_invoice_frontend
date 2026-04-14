@@ -29,7 +29,7 @@ const AddClient = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.post("http://127.0.0.1:8000/api/users/clients/", formData, {
+            await axios.post(import.meta.env.VITE_API_URL +"/api/users/clients/", formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             

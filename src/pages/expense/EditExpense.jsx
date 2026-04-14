@@ -33,7 +33,7 @@ const EditExpense = () => {
         const headers = { Authorization: `Bearer ${token}` };
 
         // ✅ Fetch Expense Details
-        axios.get(`http://127.0.0.1:8000/api/users/expenses/${id}/`, { headers })
+        axios.get(`${import.meta.env.VITE_API_URL}/api/users/expenses/${id}/`, { headers })
             .then((res) => {
                 const expense = res.data;
                 setFormData({
@@ -47,7 +47,7 @@ const EditExpense = () => {
             .catch((error) => console.error("🚨 Error fetching expense:", error));
 
         // ✅ Fetch Tenant Info
-        axios.get("http://127.0.0.1:8000/api/users/tenant-info/", { headers })
+        axios.get(import.meta.env.VITE_API_URL +"/api/users/tenant-info/", { headers })
             .then((res) => {
                 setTenantId(res.data.id);
                 setFormData(prev => ({ ...prev, tenant: res.data.id })); // Update formData with tenant ID
@@ -68,7 +68,7 @@ const EditExpense = () => {
 
         console.log("🚀 Submitting updated expense data:", formData);
 
-        axios.put(`http://127.0.0.1:8000/api/users/expenses/${id}/`, formData, { headers })
+        axios.put(`${import.meta.env.VITE_API_URL}/api/users/expenses/${id}/`, formData, { headers })
             .then(() => {
                 alert("✅ Expense updated successfully!");
                 navigate("/expenses");

@@ -21,7 +21,7 @@ const AddUserForm = () => {
     const checkUsername = async (username) => {
         if (!username) return;
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/users/check-username/?username=${username}`);
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/check-username/?username=${username}`);
             setUsernameAvailable(!response.data.exists);
         } catch (error) {
             console.error("Username check error:", error);
@@ -49,7 +49,7 @@ const AddUserForm = () => {
         }
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/users/check-email/?email=${email}`);
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/check-email/?email=${email}`);
             setEmailAvailable(!response.data.exists);
         } catch (error) {
             console.error("Email check error:", error);
@@ -78,7 +78,7 @@ const AddUserForm = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.post("http://127.0.0.1:8000/api/users/add-user/", formData, {
+            await axios.post(import.meta.env.VITE_API_URL +"/api/users/add-user/", formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

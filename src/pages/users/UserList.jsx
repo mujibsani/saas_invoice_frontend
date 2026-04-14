@@ -13,7 +13,7 @@ const UserList = () => {
         try {
             setLoading(true);
             const token = localStorage.getItem("access_token");
-            const response = await axios.get("http://127.0.0.1:8000/api/users/user-list/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/user-list/", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setUsers(response.data);

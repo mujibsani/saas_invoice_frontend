@@ -16,7 +16,7 @@ const ApproveExpenses = () => {
             const token = localStorage.getItem("access_token");
             const headers = { Authorization: `Bearer ${token}` };
 
-            const response = await axios.get("http://127.0.0.1:8000/api/users/expenses/", { headers });
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/expenses/", { headers });
 
             // ✅ Filter only pending expenses
             const pendingExpenses = response.data.filter(expense => expense.approval_status === "pending");
@@ -35,7 +35,7 @@ const ApproveExpenses = () => {
             const headers = { Authorization: `Bearer ${token}` };
 
             await axios.patch(
-                `http://127.0.0.1:8000/api/users/expenses/${expenseId}/approve-reject/`,
+                `${import.meta.env.VITE_API_URL}/api/users/expenses/${expenseId}/approve-reject/`,
                 { approval_status: status },
                 { headers }
             );

@@ -34,7 +34,7 @@ const Register = () => {
 
         const delay = setTimeout(async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/users/check-username/?username=${formData.username}`);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL }/api/users/check-username/?username=${formData.username}`);
                 setUsernameExists(response.data.exists);
             } catch (error) {
                 console.error("Error checking username:", error);
@@ -53,7 +53,7 @@ const Register = () => {
 
         const delay = setTimeout(async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/users/check-email/?email=${formData.email}`);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/check-email/?email=${formData.email}`);
                 setEmailExists(response.data.exists);
             } catch (error) {
                 console.error("Error checking email:", error);
@@ -72,7 +72,7 @@ const Register = () => {
 
         const delay = setTimeout(async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/users/check-tenant/?tenant_name=${formData.business_name}`);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/check-tenant/?tenant_name=${formData.business_name}`);
                 setTenantExists(response.data.exists);
             } catch (error) {
                 console.error("Error checking tenant name:", error);
@@ -96,7 +96,7 @@ const Register = () => {
         }
 
         try {
-            await axios.post("http://127.0.0.1:8000/api/users/register/", formData, {
+            await axios.post(import.meta.env.VITE_API_URL +"/api/users/register/", formData, {
                 headers: { "Content-Type": "application/json" }
             });
 

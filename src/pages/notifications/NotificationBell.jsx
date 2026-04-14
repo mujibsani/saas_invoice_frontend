@@ -11,7 +11,7 @@ const NotificationBell = () => {
     // Fetch unread count
     const fetchUnreadCount = async () => {
         try {
-            const response = await axios.get("http://127.0.0.1:8000/api/users/notifications/unread-count/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/notifications/unread-count/", {
                 headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` }
             });
             setUnreadCount(response.data.unread_count);
@@ -23,7 +23,7 @@ const NotificationBell = () => {
     // Fetch notifications
     const fetchNotifications = async () => {
         try {
-            const response = await axios.get("http://127.0.0.1:8000/api/users/notifications/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/notifications/", {
                 headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` }
             });
             setNotifications(response.data);

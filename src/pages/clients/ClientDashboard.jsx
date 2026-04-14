@@ -27,7 +27,7 @@ const ClientDashboard = () => {
                     return;
                 }
 
-                const response = await axios.get("http://127.0.0.1:8000/api/users/client-dashboard/", {
+                const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/client-dashboard/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 

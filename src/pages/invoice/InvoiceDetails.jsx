@@ -20,7 +20,7 @@ const InvoiceDetails = () => {
                     return;
                 }
 
-                const response = await axios.get(`http://127.0.0.1:8000/api/users/invoices/${id}/`, {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/invoices/${id}/`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -43,7 +43,7 @@ const InvoiceDetails = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.delete(`http://127.0.0.1:8000/api/users/invoices/${id}/`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/invoices/${id}/`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -59,7 +59,7 @@ const InvoiceDetails = () => {
         try {
             const token = localStorage.getItem("access_token");
             await axios.patch(
-                `http://127.0.0.1:8000/api/users/invoices/${id}/`,
+                `${import.meta.env.VITE_API_URL}/api/users/invoices/${id}/`,
                 { status: "paid" },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -80,7 +80,7 @@ const InvoiceDetails = () => {
                 throw new Error("User is not authenticated.");
             }
     
-            const url = `http://127.0.0.1:8000/api/users/invoices/${id}/pdf/`;
+            const url = `${import.meta.env.VITE_API_URL}/api/users/invoices/${id}/pdf/`;
     
             console.log(`📢 Fetching PDF from: ${url}`);
     
@@ -117,7 +117,7 @@ const InvoiceDetails = () => {
         setDownloading(true);
         try {
             const token = localStorage.getItem("access_token");
-            const url = `http://127.0.0.1:8000/api/users/invoices/${id}/pdf/`;
+            const url = `${import.meta.env.VITE_API_URL}/api/users/invoices/${id}/pdf/`;
 
             const response = await axios.get(url, {
                 headers: { Authorization: `Bearer ${token}` },

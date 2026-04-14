@@ -15,7 +15,7 @@ const ClientList = () => {
         try {
             setLoading(true);
             const token = localStorage.getItem("access_token");
-            const response = await axios.get("http://127.0.0.1:8000/api/users/clients/", {
+            const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/clients/", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             
@@ -38,7 +38,7 @@ const ClientList = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.delete(`http://127.0.0.1:8000/api/users/clients/${clientId}/`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/clients/${clientId}/`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -57,7 +57,7 @@ const ClientList = () => {
     const handleSaveChanges = async () => {
         try {
             const token = localStorage.getItem("access_token");
-            await axios.put(`http://127.0.0.1:8000/api/users/clients/${editingClient.id}/`, editingClient, {
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/users/clients/${editingClient.id}/`, editingClient, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -76,7 +76,7 @@ const ClientList = () => {
         try {
             const token = localStorage.getItem("access_token");
             await axios.post(
-                `http://127.0.0.1:8000/api/users/reset-password/${clientId}/`,
+                `${import.meta.env.VITE_API_URL}/api/users/reset-password/${clientId}/`,
                 { new_password: newPassword },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

@@ -29,7 +29,7 @@ const EditInvoice = () => {
                 const headers = { Authorization: `Bearer ${token}` };
 
                 // ✅ Fetch Invoice Details
-                const invoiceRes = await axios.get(`http://127.0.0.1:8000/api/users/invoices/${id}/`, { headers });
+                const invoiceRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/invoices/${id}/`, { headers });
                 const invoice = invoiceRes.data;
                 setFormData({
                     client: invoice.client,
@@ -48,15 +48,15 @@ const EditInvoice = () => {
                 });
 
                 // ✅ Fetch Clients
-                const clientsRes = await axios.get("http://127.0.0.1:8000/api/users/clients/", { headers });
+                const clientsRes = await axios.get(import.meta.env.VITE_API_URL +"/api/users/clients/", { headers });
                 setClients(clientsRes.data);
 
                 // ✅ Fetch Users
-                const usersRes = await axios.get("http://127.0.0.1:8000/api/users/user-list/", { headers });
+                const usersRes = await axios.get(import.meta.env.VITE_API_URL +"/api/users/user-list/", { headers });
                 setUsers(usersRes.data);
 
                 // ✅ Fetch Tenant Info
-                const tenantRes = await axios.get("http://127.0.0.1:8000/api/users/tenant-info/", { headers });
+                const tenantRes = await axios.get(import.meta.env.VITE_API_URL +"/api/users/tenant-info/", { headers });
                 setTenantId(tenantRes.data.id);
 
                 setLoading(false);

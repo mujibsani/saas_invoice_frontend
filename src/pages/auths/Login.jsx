@@ -32,7 +32,7 @@ const Login = ({ onLogin }) => {
         setError("");
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/api/users/login/", formData);
+            const response = await axios.post(import.meta.env.VITE_API_URL +"/api/users/login/", formData);
             if (response.status === 200) {
                 const { access, refresh, username, email, role, tenant_name } = response.data;
 

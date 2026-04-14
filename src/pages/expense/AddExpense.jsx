@@ -39,7 +39,7 @@ const AddExpense = () => {
 
                 if (!token) throw new Error("Unauthorized. Please log in.");
 
-                const response = await axios.get("http://127.0.0.1:8000/api/users/tenant-info/", {
+                const response = await axios.get(import.meta.env.VITE_API_URL +"/api/users/tenant-info/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
@@ -88,7 +88,7 @@ const AddExpense = () => {
 
             console.log("🚀 Sending Expense Data:", expenseData);
 
-            await axios.post("http://127.0.0.1:8000/api/users/expenses/", expenseData, { headers });
+            await axios.post(import.meta.env.VITE_API_URL +"/api/users/expenses/", expenseData, { headers });
 
             alert("Expense added successfully!");
             navigate("/expenses");
