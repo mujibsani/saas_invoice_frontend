@@ -31,10 +31,10 @@ const Register = () => {
             setUsernameExists(null);
             return;
         }
-
+        console.log(import.meta.env.VITE_API_URL);
         const delay = setTimeout(async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL }/api/users/check-username/?username=${formData.username}`);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/check-username/?username=${formData.username}`);
                 setUsernameExists(response.data.exists);
             } catch (error) {
                 console.error("Error checking username:", error);
