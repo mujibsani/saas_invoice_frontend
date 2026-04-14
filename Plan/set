@@ -1,0 +1,6 @@
+localStorage.setItem("access_token", access);
+localStorage.setItem("refresh_token", refresh);
+localStorage.setItem("username", username);
+localStorage.setItem("email", email);
+localStorage.setItem("role", role);
+localStorage.setItem("tenant_name", tenant_name);
