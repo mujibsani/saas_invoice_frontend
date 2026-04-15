@@ -122,7 +122,7 @@ const EditInvoice = () => {
     
             console.log("Sending Data:", JSON.stringify(invoiceData, null, 2));  // ✅ Log data before sending
     
-            await axios.put(`http://127.0.0.1:8000/api/users/invoices/${id}/`, invoiceData, { headers });
+            await axios.put(`${import.meta.env.VITE_API_URL}/api/users/invoices/${id}/`, invoiceData, { headers });
     
             alert("Invoice updated successfully!");
             navigate("/invoices");

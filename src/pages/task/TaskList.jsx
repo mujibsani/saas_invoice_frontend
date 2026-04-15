@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000/api/users/tasks/";
-const USERS_API_URL = "http://127.0.0.1:8000/api/users/user-list/";
+const API_URL = import.meta.env.VITE_API_URL+"/api/users/tasks/";
+const USERS_API_URL = import.meta.env.VITE_API_URL+"/api/users/user-list/";
 
 const TaskList = () => {
   const navigate = useNavigate();

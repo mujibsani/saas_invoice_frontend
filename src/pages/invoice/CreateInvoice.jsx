@@ -136,7 +136,7 @@ const CreateInvoice = () => {
             };
 
             console.log("Submitting Invoice:", invoiceData);
-            await axios.post("http://127.0.0.1:8000/api/users/invoices/manage/", invoiceData, { headers });
+            await axios.post(import.meta.env.VITE_API_URL+"/api/users/invoices/manage/", invoiceData, { headers });
 
             alert("Invoice created successfully!");
             navigate("/invoices");

@@ -26,12 +26,12 @@ const Settings = () => {
         const fetchTenantInfo = async () => {
             try {
                 const token = localStorage.getItem("access_token");
-                const response = await axios.get("http://127.0.0.1:8000/api/users/tenant-info/", {
+                const response = await axios.get(import.meta.env.VITE_API_URL+"/api/users/tenant-info/", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
                 // ✅ Convert relative path to full URL
-                const fullLogoUrl = response.data.logo ? `http://127.0.0.1:8000${response.data.logo}` : null;
+                const fullLogoUrl = response.data.logo ? `${import.meta.env.VITE_API_URL}${response.data.logo}` : null;
 
                 setTenant({ domain: response.data.domain, logo: fullLogoUrl });
                 setLogoPreview(fullLogoUrl); // ✅ Set preview correctly
@@ -74,7 +74,7 @@ const Settings = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.put("http://127.0.0.1:8000/api/users/profile/", user, {
+            await axios.put(import.meta.env.VITE_API_URL+"/api/users/profile/", user, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -92,7 +92,7 @@ const Settings = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.post("http://127.0.0.1:8000/api/users/change-password/", passwordData, {
+            await axios.post(import.meta.env.VITE_API_URL+"/api/users/change-password/", passwordData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -113,7 +113,7 @@ const Settings = () => {
             const formData = new FormData();
             if (tenant.logo) formData.append("logo", tenant.logo); // ✅ Only update logo
 
-            await axios.put("http://127.0.0.1:8000/api/users/tenant/update/", formData, {
+            await axios.put(import.meta.env.VITE_API_URL+"/api/users/tenant/update/", formData, {
                 headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" },
             });
 

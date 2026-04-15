@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000/api/users/tasks/";
-const USERS_API_URL = "http://127.0.0.1:8000/api/users/user-list/";
-const TENANT_INFO_URL = "http://127.0.0.1:8000/api/users/tenant-info/";
+const API_URL = import.meta.env.VITE_API_URL+"/api/users/tasks/";
+const USERS_API_URL = import.meta.env.VITE_API_URL+"/api/users/user-list/";
+const TENANT_INFO_URL = import.meta.env.VITE_API_URL+"/api/users/tenant-info/";
 
 const CreateTask = () => {
   const navigate = useNavigate();

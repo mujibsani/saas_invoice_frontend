@@ -41,7 +41,7 @@ const UserList = () => {
         try {
             const token = localStorage.getItem("access_token");
             const response = await axios.post(
-                `http://127.0.0.1:8000/api/users/toggle-user-status/${userId}/`, 
+                `${import.meta.env.VITE_API_URL}/api/users/toggle-user-status/${userId}/`, 
                 {}, 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -70,7 +70,7 @@ const UserList = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.delete(`http://127.0.0.1:8000/api/users/delete-user/${userId}/`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL}/api/users/delete-user/${userId}/`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -88,7 +88,7 @@ const UserList = () => {
         try {
             const token = localStorage.getItem("access_token");
             await axios.post(
-                `http://127.0.0.1:8000/api/users/reset-password/${userId}/`, 
+                `${import.meta.env.VITE_API_URL}/api/users/reset-password/${userId}/`, 
                 { user_id: userId, new_password: newPassword }, 
                 { headers: { Authorization: `Bearer ${token}` } }
             );
